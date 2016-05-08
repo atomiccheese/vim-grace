@@ -15,6 +15,8 @@ syntax keyword graceLabelKeywords case
 syntax keyword graceLoopKeywords while for
 syntax keyword graceExcKeywords try catch finally
 
+syntax keyword gracePragma #pragma
+
 syntax match graceNumber "\v<\d+>"
 syntax match graceNumber "\v<\d+.\d+>"
 syntax match graceNumber "\v<\d+e\(-|\+\)?\d+>"
@@ -30,7 +32,6 @@ syntax match graceNormIdent "\v[a-z][A-Za-z0-9'_]*"
 
 syntax match graceOperator "\v:="
 syntax match graceOperator "\v\="
-" syntax match graceOperator "\v[!?@#%^&|]+"
 syntax match graceOperator "\v[!?@#%^&|~=+\-*/\\><:.$]+"
 
 syntax region graceString start=/"/ skip=/\\"/ end=/"/ oneline contains=graceInterpWrap
@@ -56,7 +57,4 @@ highlight default link graceLoopKeywords Repeat
 highlight default link graceExcKeywords Exception
 
 highlight default link graceOperator Operator
-highlight default link graceAttributes Operator
-highlight default link graceStructure Operator
-highlight default link graceType Operator
-highlight default link graceImports Operator
+highlight default link gracePragma PreProc
