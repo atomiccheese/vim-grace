@@ -10,28 +10,31 @@ syntax keyword graceKeywords
     \ inherit use alias exclude
     \ required override
     \ type
-syntax keyword graceConditionalKeywords if else match
+syntax keyword graceConditionalKeywords if else match elseif
 syntax keyword graceLabelKeywords case
 syntax keyword graceLoopKeywords while for
 syntax keyword graceExcKeywords try catch finally
 
 syntax match graceNumber "\v<\d+>"
 syntax match graceNumber "\v<\d+.\d+>"
-syntax match graceNumber "\v<\d+e\(-|+\)?\d+>"
-syntax match graceNumber "\v<\d+.\d+e\(-|+\)?\d+>"
+syntax match graceNumber "\v<\d+e\(-|\+\)?\d+>"
+syntax match graceNumber "\v<\d+.\d+e\(-|\+\)?\d+>"
 syntax match graceNumber "\v<0x[0-9a-fA-F]+>"
 syntax match graceNumber "\v<2x[01]+>"
 
-syntax match graceBoolean true false
+syntax keyword graceBoolean true false
 syntax match gracePredefConstant "\v\.\.\."
 
 syntax match graceTypeIdent "\v[A-Z][A-Za-z0-9'_]*"
 syntax match graceNormIdent "\v[a-z][A-Za-z0-9'_]*"
 
-syntax match graceOperator "\v
+syntax match graceOperator "\v:="
+syntax match graceOperator "\v\="
+" syntax match graceOperator "\v[!?@#%^&|]+"
+syntax match graceOperator "\v[!?@#%^&|~=+\-*/\\><:.$]+"
 
 syntax region graceString start=/"/ skip=/\\"/ end=/"/ oneline contains=graceInterpWrap
-syntax region graceInterpWrap start="\v{\s*" end="\v\s*}" contained containedin=graceString
+syntax region graceInterpWrap start="\v\{\s*" end="\v\s*\}" contained containedin=graceString
 
 highlight default link graceTodos Todo
 highlight default link graceImport Include
