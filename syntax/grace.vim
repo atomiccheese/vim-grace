@@ -35,7 +35,7 @@ syntax match graceOperator "\v\="
 syntax match graceOperator "\v[!?@#%^&|~=+\-*/\\><:.$]+"
 
 syntax region graceString start=/"/ skip=/\\"/ end=/"/ oneline contains=graceInterpWrap
-syntax region graceInterpWrap start="\v\{\s*" end="\v\s*\}" contained containedin=graceString
+syntax region graceInterpWrap start="\v\(\\\)\@<!\{\s*" end="\v\s*\}" contained containedin=graceString
 
 highlight default link graceTodos Todo
 highlight default link graceImport Include
